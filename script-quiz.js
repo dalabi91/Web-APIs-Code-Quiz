@@ -1,5 +1,5 @@
 //quiz question and answers
-var question =  [
+var questions =  [
  {
     question: "What does 'JS' stand for?",
     choices: ["Java Source", "JavaScript", "JumboScript", "JustScript"],
@@ -64,11 +64,27 @@ var currentIndex = 0;
 //declared  variable
 var time = document.getElementById("time");
 var startScreen = document.getElementById("start-screen");
-var start = document.getElementById("start");
+var startBtn = document.getElementById("start");
 var questionsDiv = document.getElementById("questions");
 var questionsTitle = document.getElementById("question-title");
+var choices = document.getElementById("choices");
 var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
 var initials = document.getElementById("initials");
 var feedback = document.getElementById("feedback");
+
+//function to display questions
+function displayQuestion() {
+      var currentQuestion = questions[currentIndex];
+      questionsDiv.textContent = currentQuestion.question;
+      choices.innerHTML = "";
+      currentQuestion.choices.forEach(function (choice) {
+        var li = document.createElement("li");
+        li.textContent = choice;
+        choices.appendChild(li);
+      });
+    }
+    // displayQuestion()
+ 
+//function to check users answers
 
