@@ -56,3 +56,19 @@ var question =  [
   correctAnswer: "To check if a variable is an array"
 }
 ];
+
+// variables 
+var score = 0;
+var currentIndex = 0;
+
+//declared  variable
+var time = document.getElementById("time");
+var startScreen = document.getElementById("start-screen");
+var start = document.getElementById("start");
+var questionsDiv = document.getElementById("questions");
+var questionsTitle = document.getElementById("question-title");
+var endScreen = document.getElementById("end-screen");
+var finalScore = document.getElementById("final-score");
+var initials = document.getElementById("initials");
+var feedback = document.getElementById("feedback");
+
