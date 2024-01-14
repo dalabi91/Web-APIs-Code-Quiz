@@ -57,34 +57,59 @@ var questions =  [
 }
 ];
 
-// variables 
+// declared variables 
 var score = 0;
 var currentIndex = 0;
 
-//declared  variable
+//DOM elements  
 var time = document.getElementById("time");
 var startScreen = document.getElementById("start-screen");
 var startBtn = document.getElementById("start");
 var questionsDiv = document.getElementById("questions");
 var questionsTitle = document.getElementById("question-title");
-var choices = document.getElementById("choices");
+var choicesElement = document.getElementById("choices");
 var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
 var initials = document.getElementById("initials");
+var submitBtn = document.getElementById("submit");
 var feedback = document.getElementById("feedback");
 
 //function to display questions
 function displayQuestion() {
       var currentQuestion = questions[currentIndex];
-      questionsDiv.textContent = currentQuestion.question;
-      choices.innerHTML = "";
+      questionsTitle.textContent = currentQuestion.question;
+      choicesElement.innerHTML = "";
       currentQuestion.choices.forEach(function (choice) {
         var li = document.createElement("li");
         li.textContent = choice;
-        choices.appendChild(li);
+        choicesElement.appendChild(li);
       });
     }
-    // displayQuestion()
+    displayQuestion();
  
 //function to check users answers
+function checkAnswer(selectedAnswer) {
+  var currentQuestion = questions[currentIndex];
+  if (selectedAnswer === currentQuestion.correctAnswer) {
+    score++;
+  }
+  currentIndex++;
+  if (currentIndex < questions.length) {
+    displayQuestion();
+  } else {
+    showResults();
+  }
+}
 
+//function to show results
+// function showResults() {
+//   questionsDiv.textContent = "";
+//   choices.innerHTML = "";
+//   endScreen.style.display = "block";
+//   finalScore.textContent = score + " out of " + questions.length;
+// }
+function showResults() {
+  questionsDiv.style.display = "none";
+  endScreen.style.display = "block";
+  finalScore.textContent = score + " out of " + questions.length;
+}
