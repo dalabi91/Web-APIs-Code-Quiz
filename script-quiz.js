@@ -127,22 +127,31 @@ function showResults() {
 }
 
 //function to restart quiz
-function restartQuiz() {
-  questionIndex  = 0;
-  score = 0;
-  questionsDiv.style.display = "block";
-  endScreen.style.display = "none";
-  displayQuestion();
+
+// Function to end the quiz
+function endQuiz() {
+  clearInterval(timer);
+  questionsDiv.style.display = "none";
+  endScreen.style.display = "block";
+  finalScore.textContent = score;
 }
 
+// function restartQuiz() {
+//   questionIndex  = 0;
+//   score = 0;
+//   questionsDiv.style.display = "block";
+//   endScreen.style.display = "none";
+//   displayQuestion();
+// }
+
 // Function to save the user's score 
-function saveUserScore(userScore) {
-  //To store scores in localStorage
-  var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-  highScores.push(userScore);
-  localStorage.setItem("highScores", JSON.stringify(highScores));
+// function saveUserScore(userScore) {
+//   //To store scores in localStorage
+//   var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+//   highScores.push(userScore);
+//   localStorage.setItem("highScores", JSON.stringify(highScores));
   
-}
+// }
  //event listeners
  //start button
  startBtn.addEventListener("click", function () {
@@ -159,13 +168,32 @@ function saveUserScore(userScore) {
  });
  
 //  submit buttons
- submitBtn.addEventListener("click", function (event) {
+ submitBtn.addEventListener("click", function () {
    var  userInitials = initialsInput.Value;
-   if (userInitials !== ""){
+   if (userInitials === ""){
      console.log("User's initials", userInitials);
-   }
+     window.alert("Please enter your initials.");
+    //  feedback("Please enter your initials.");
+        } 
+        else {
+          var finalScore = {
+            initialsInput: initials,
+            score: score, 
+          }
+          var highScores = localStorage.getItem("highScores");
+          if (highScores === null){
+            highScores =[];
+          } else {
+            highScores = JSON.parse(highScores);
+          }
+      highScores.push(finalScore);
+      var newScore = JSON.stringify(highScores);
+      localStorage.setItem("highScores", newScore);
+      window.location.replace("highScores.html");
+      console.log(highScores);
+    }
 
-   checkAnswer(event.target.textContent);
+  //  checkAnswer();
 
  });
 
@@ -177,7 +205,7 @@ function saveUserScore(userScore) {
 //         saveUserScore(userScore);
 
 //         // Display additional message or redirect to another page
-//         // endScreen.innerHTML = "<p>Thank you for taking the quiz!</p>";
+//         endScreen.innerHTML = "<p>Thank you for taking the quiz!</p>";
 //     });
 
 
