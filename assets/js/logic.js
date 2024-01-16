@@ -18,9 +18,6 @@ var questionIndex = 0;
 var timeRemaining = 90;
 // var quizTotalTime = 90;
 
-//randomly display questions
-// var randomQus = questions.sort(() => Math.random()- 0.5);
-
 //adding sound variables to correct/wrong answer
 
 var soundCorrect = new Audio("assets/sfx/correct.wav");
@@ -36,6 +33,8 @@ function startQuiz() {
   theEnd();
   timerElement();
 }
+// randomly display questions
+// var randomQus = questions.sort(() => Math.random() - 0.5);
 
 function displayQuestion() {
   startScreen.classList.add("hide"); //add css class hide to the html
@@ -51,15 +50,6 @@ function displayQuestion() {
     button.addEventListener("click", () => checkAnswer(choices));
   });
 }
-
-//choices element event listener
-// choicesElement.addEventListener("click", function (event) {
-//   if (event.target.tagName === "LI") {
-//     checkAnswer(event.target.textContent);
-//   }
-// });
-// displayQuestion();
-// startTimer();
 
 //function to check users answers
 function checkAnswer(selectedAnswer) {
@@ -101,8 +91,6 @@ function showResults() {
   endScreen.style.display = "block";
   //display the final score
   finalScore.textContent = score + " out of " + questions.length;
-  // Stop the timer when the quiz ends
-  // clearInterval(timerInterval);
 }
 
 //timer function
@@ -120,60 +108,40 @@ function startTimer() {
     }
   }, 1000); // Update the timer every second
 }
-
 // function updateTimer() {
 //   timerElement.textContent = "Time: " + timeRemaining + "s";
 // }
 
-// Function to end the quiz
+// Function to display score
 function theEnd() {
   finalScore.textContent = score;
 }
 
-// function restartQuiz() {
-//   questionIndex  = 0;
-//   score = 0;
-//   questionsDiv.style.display = "block";
-//   endScreen.style.display = "none";
-//   displayQuestion();
-// }
-
-// Function to save the user's score
-// function saveUserScore(userScore) {
-//   //To store scores in localStorage
-//   var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-//   highscores.push(userScore);
-//   localStorage.setItem("highscores", JSON.stringify(highscores));
-
-// }
-//event listeners
-
 //  submit buttons
 submitBtn.addEventListener("click", function () {
-  var userInitials = initialsInput.Value;
+  var userInitials = initialsInput.Value.toUpperCase();
+
   if (userInitials === "") {
-    console.log("User's initials", userInitials);
     window.alert("Please enter your initials.");
     //  feedback("Please enter your initials.");
   } else {
-    var finalScore = {
+    scoreList.push({
       initialsInput: initials,
       score: score,
-    };
-    var highscores = localStorage.getItem("highscores");
-    if (highscores === null) {
-      highscores = [];
+    });
+    var storeScore = localStorage.getItem("score");
+    var scoreList;
+    if (storeScore !== null) {
+      scoreList = JSON.parse(storeScore);
     } else {
-      highscores = JSON.parse(highscores);
+      scoreList = [];
     }
-    highscores.push(finalScore);
-    var newScore = JSON.stringify(highscores);
-    localStorage.setItem("highscores", newScore);
-    window.location.replace("highscores.html");
-    console.log(highscores);
+    submitBtn.disabled = true;
+    setTimeout(function () {
+      window.location.href = "highscores.html";
+    }, 1000);
   }
-
-  //  checkAnswer();
+  localStorage.setItem("score", JSON.stringify(scoreList));
 });
 
 //  submitBtn.addEventListener("click", function() {
