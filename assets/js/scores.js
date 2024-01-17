@@ -4,7 +4,7 @@ var clearBtn = document.getElementById("clear");
 
 //function to get stored result from local storage
 function getStoredResults() {
-  var storedResults = localStorage.getItem("scores");
+  var storedResults = localStorage.getItem("score");
   //check if theirs any stored results ( not null)
   if (storedResults !== null) {
     // Parse the stored results from a JSON string to a JavaScript object
@@ -19,14 +19,14 @@ function listHighscores(listItems) {
   listItems.forEach(function (listItems) {
     var li = document.createElement("li");
     li.textContent =
-      "Name: " + listItems + " / " + " Scores: " + listItems.scores;
+      "Name: " + listItems + " / " + " score: " + listItems.score;
     highScores.appendChild(li);
   });
 }
 
 // Clear local storage and scoreboard
 function clearResults() {
-  localStorage.removeItem("scores");
+  localStorage.removeItem("score");
   clearElementChildren(highscores);
 }
 

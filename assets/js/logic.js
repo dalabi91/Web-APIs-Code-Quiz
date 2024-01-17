@@ -60,7 +60,7 @@ function checkAnswer(selectedAnswer) {
     soundCorrect.play();
     score++;
   } else {
-    //provide feedback that the answer is wrong and tells teh correct answer.
+    //provide feedback that the answer is wrong, deduct time and score
     feedback.textContent = "Wrong";
     soundWrong.play();
     timeRemaining -= 10;
@@ -105,9 +105,6 @@ function startTimer() {
     }
   }, 1000); // Update the timer every second
 }
-// function updateTimer() {
-//   timerElement.textContent = "Time: " + timeRemaining + "s";
-// }
 
 // Function to display score
 function theEnd() {
