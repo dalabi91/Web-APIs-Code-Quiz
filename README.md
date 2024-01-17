@@ -48,7 +48,7 @@ This webpage can be accessed by [**clicking here**](https://dalabi91.github.io/W
 
 ![](./assets/images/ansCheck.1.png)
 
-Check if answer is wrong with correct audio sound
+    Check if answer is wrong with correct audio sound
 
 ![](./assets/images/ansCheck.2.png)
 
@@ -56,7 +56,7 @@ Check if answer is wrong with correct audio sound
 
 ![](./assets/images/Alldone.png)
 
-Page once timer get to zero
+    Page once timer get to zero
 
 ![](./assets/images/zeroTime.png)
 
@@ -71,5 +71,6 @@ This project is licensed under the MIT License.
 
 ## Badges
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![JavaScript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat)
 ![VS Code](https://img.shields.io/badge/Made%20with-VSCode-1f425f.svg)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
