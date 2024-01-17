@@ -16,10 +16,8 @@ var highscores = document.getElementById("highscores");
 var score = 0;
 var questionIndex = 0;
 var timeRemaining = 90;
-// var quizTotalTime = 90;
 
 //adding sound variables to correct/wrong answer
-
 var soundCorrect = new Audio("assets/sfx/correct.wav");
 var soundWrong = new Audio("assets/sfx/incorrect.wav");
 
@@ -27,12 +25,9 @@ var soundWrong = new Audio("assets/sfx/incorrect.wav");
 startBtn.addEventListener("click", startQuiz);
 //to start the quiz
 function startQuiz() {
-  //   startScreen.style.display = "none";
-  //   questionsDiv.style.display = "block";
   timerElement.textContent = timeRemaining;
   displayQuestion();
   theEnd();
-  // timerElement();
   startTimer();
 }
 // randomly display questions
@@ -145,14 +140,3 @@ submitBtn.addEventListener("click", function () {
   }
   localStorage.setItem("score", JSON.stringify(scoreList));
 });
-
-//  submitBtn.addEventListener("click", function() {
-//         // Get the user's initials
-//         var userInitials = initialsInput.value;
-//          // Saves the score and user initials
-//         var userScore = { initials: userInitials, Score: score };
-//         saveUserScore(userScore);
-
-//         // Display additional message or redirect to another page
-//         endScreen.innerHTML = "<p>Thank you for taking the quiz!</p>";
-//     });
