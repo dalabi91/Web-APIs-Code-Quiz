@@ -62,6 +62,8 @@ This webpage can be accessed by [**clicking here**](https://dalabi91.github.io/W
 
 - [**W3 School**](https://www.w3schools.com/)
 - [**MDN Web Docs**](https://developer.mozilla.org/)
+- [**JS CheatSheet**](https://htmlcheatsheet.com/js/#)
+-
 
 ## License
 
