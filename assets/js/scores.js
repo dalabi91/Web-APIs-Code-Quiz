@@ -9,8 +9,9 @@ function getStoredResults() {
   if (storedResults !== null) {
     // Parse the stored results from a JSON string to a JavaScript object
     var listItems = JSON.parse(storedResults);
-    displayHighscores(listItems);
+    listHighscores(listItems);
   }
+  console.log(storedResults);
 }
 
 //display result ina list format
@@ -18,8 +19,7 @@ function getStoredResults() {
 function listHighscores(listItems) {
   listItems.forEach(function (listItems) {
     var li = document.createElement("li");
-    li.textContent =
-      "Name: " + listItems + " / " + " score: " + listItems.score;
+    li.textContent = listItems.initials + " / " + " score: " + listItems.score;
     highScores.appendChild(li);
   });
 }
@@ -27,7 +27,7 @@ function listHighscores(listItems) {
 // Clear local storage and scoreboard
 function clearResults() {
   localStorage.removeItem("score");
-  clearElementChildren(highscores);
+  //   clearElementChildren(highscores);
 }
 
 // function to clear child elements of a given element

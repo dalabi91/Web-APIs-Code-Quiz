@@ -113,18 +113,19 @@ function theEnd() {
 
 //  submit buttons
 submitBtn.addEventListener("click", function () {
-  var userInitials = initialsInput.Value.toUpperCase();
+  var userInitials = initialsInput.value.toUpperCase();
 
   if (userInitials === "") {
     window.alert("Please enter your initials.");
     //  feedback("Please enter your initials.");
   } else {
+    var scoreList = [];
     scoreList.push({
       initialsInput: initials,
       score: score,
     });
     var storeScore = localStorage.getItem("score");
-    var scoreList;
+
     if (storeScore !== null) {
       scoreList = JSON.parse(storeScore);
     } else {
