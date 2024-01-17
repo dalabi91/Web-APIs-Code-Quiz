@@ -29,9 +29,11 @@ startBtn.addEventListener("click", startQuiz);
 function startQuiz() {
   //   startScreen.style.display = "none";
   //   questionsDiv.style.display = "block";
+  timerElement.textContent = timeRemaining;
   displayQuestion();
   theEnd();
-  timerElement();
+  // timerElement();
+  startTimer();
 }
 // randomly display questions
 // var randomQus = questions.sort(() => Math.random() - 0.5);
@@ -99,7 +101,7 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timeRemaining--;
     timerElement.textContent = timeRemaining;
-    if (timeRemaining === 0) {
+    if (timeRemaining === 0 || questionIndex === questions.length) {
       clearInterval(timerInterval);
       theEnd();
       questionsDiv.classList.add("hide");
